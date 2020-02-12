@@ -105,7 +105,7 @@ function createSearchHTML(){
 
   var inputCont = ele('div');
   a(inputCont,[['style',`width: 100%;`]]);
-  cbod.appendChild(inputCont)
+  cbod.appendChild(inputCont);
 
   var cmd = ele('input');
   a(cmd, [['placeholder','command'],    ['style', `width: 80%; padding: 4px; border: 1px solid #004471; border-radius: 0.4em; `]  ]);
@@ -115,7 +115,7 @@ function createSearchHTML(){
 }
 
 function getGermanFromEnglish(e){
-    var command = this.value;
+  var command = this.value;
     
   if(e.key == 'Enter'){
     var exact = command_table.filter(el=> el.some(ii=> ii[0].toLowerCase() == command.toLowerCase()));
