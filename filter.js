@@ -133,19 +133,26 @@ function addSearchResultsHTML(objArr){
   if(gi(document,'command_loopup_res1')) gi(document,'command_loopup_res1').outerHTML = '';
   if(gi(document,'command_input_res')) gi(document,'command_input_res').outerHTML = '';
 
-  var inp = ele('textarea');
-  a(inp, [['id','command_input_res'],['style',`border: 1px solid transparent; border-radius: .4em;`]]);
-  gi(document,'command_loopup_cbod').appendChild(inp);
-  inp.value = objArr[0].filter(el=> el[1] == 'de' )[0][0];
-  inp.select();
-  document.execCommand("copy");
+  if(objArr && objArr.length){
+    var inp = ele('textarea');
+    a(inp, [['id','command_input_res'],['style',`border: 1px solid transparent; border-radius: .4em;`]]);
+    gi(document,'command_loopup_cbod').appendChild(inp);
+    inp.value = objArr[0].filter(el=> el[1] == 'de' )[0][0];
+    inp.select();
+    document.execCommand("copy");
 
-  inp.outerHTML = '';
-  var res = ele('div');
-  a(res,[['id','command_loopup_res'],['style',`padding: 6px;`]]);
-  gi(document,'command_loopup_cbod').appendChild(res);
-  res.innerText = 'German:\n' +objArr[0].filter(el=> el[1] == 'de' )[0][0];
-  
+    inp.outerHTML = '';
+    var res = ele('div');
+    a(res,[['id','command_loopup_res'],['style',`padding: 6px;`]]);
+    gi(document,'command_loopup_cbod').appendChild(res);
+    res.innerText = 'German:\n' +objArr[0].filter(el=> el[1] == 'de' )[0][0];
+  }else{
+    var res = ele('div');
+    a(res,[['id','command_loopup_res'],['style',`padding: 6px;`]]);
+    gi(document,'command_loopup_cbod').appendChild(res);
+    res.innerText = 'no matches';
+    
+  }
 }
 
 function addSearchResultsHTML_auto(objArr){
